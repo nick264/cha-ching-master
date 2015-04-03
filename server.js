@@ -20,11 +20,12 @@ app.post('/stripe', function(req, res) {
 });
 
 app.post('/robertobot', function(req, res) {
-	console.log("Incoming");
-
 	if(req.body.speak) {
-		console.log("Sending speak request");
-		io.sockets.emit('speak', { text: req.body.speak} )
+		io.sockets.emit('speak', { text: req.body.speak} );
+	};
+
+	if (req.body.emit) {
+		io.sockets.emit(req.body.emit);
 	};
 
 	res.send('OK');
