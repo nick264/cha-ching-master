@@ -19,6 +19,17 @@ app.post('/stripe', function(req, res) {
   res.send('OK')
 });
 
+app.post('/robertobot', function(req, res) {
+	console.log("Incoming");
+
+	if(req.body.speak) {
+		console.log("Sending speak request");
+		io.sockets.emit('speak', { text: req.body.speak} )
+	};
+
+	res.send('OK');
+});
+
 io.sockets.on('connection', function (socket) {
   console.log('new socket client connected')
 });
