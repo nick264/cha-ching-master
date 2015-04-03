@@ -10,3 +10,7 @@ socket.on('cash', function() {
 socket.on('speak', function(data) {
 	talker.talk(data.text);
 } );
+
+socket.on('standup', function() {
+	play.sound("./standup.mp3");
+})
